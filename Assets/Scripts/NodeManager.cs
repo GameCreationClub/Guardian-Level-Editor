@@ -24,4 +24,9 @@ public class NodeManager : GlobalEnums
             node.SetSpriteValue(SpriteValue.empty);
         }
     }
+
+    public void SetClickMode(int clickMode)
+    {
+        this.clickMode = (ClickMode)clickMode;
+    }
 }

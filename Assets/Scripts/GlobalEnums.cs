@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class GlobalEnums : MonoBehaviour
 {
-    public enum ClickMode { Add, Erase };
+    public enum ClickMode { Select, Add, Erase };
 }
