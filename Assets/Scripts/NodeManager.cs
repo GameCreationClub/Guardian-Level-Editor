@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NodeManager : GlobalEnums
 {
     public ClickMode clickMode;
 
     public SpriteValue currentSpriteValue;
+
+    public Image currentSpriteImage;
 
     private Main main;
     private PropertiesPanel propertiesPanel;
@@ -17,7 +20,7 @@ public class NodeManager : GlobalEnums
         propertiesPanel = FindObjectOfType<PropertiesPanel>();
 
         //REMOVE LATER:
-        currentSpriteValue = main.spriteValues[0];
+        SetCurrentSpriteValue(main.spriteValues[0]);
     }
 
     public void HandleNodeClick(Node node)
@@ -49,5 +52,6 @@ public class NodeManager : GlobalEnums
     public void SetCurrentSpriteValue(SpriteValue spriteValue)
     {
         currentSpriteValue = spriteValue;
+        currentSpriteImage.sprite = spriteValue.sprite;
     }
 }
