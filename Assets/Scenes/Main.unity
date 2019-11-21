@@ -841,11 +841,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: 
   spriteValues:
-  - name: Pink
-    sprite: {fileID: 21300000, guid: 04ab1392c39deee4e84984c74fc98ec7, type: 3}
+  - name: Blindness Trap
+    sprite: {fileID: 21300000, guid: 15b047b8053dc604890fe236a19ece11, type: 3}
     type: 0
-  - name: Circle
-    sprite: {fileID: 21300000, guid: 225c4a8df931b9b42b3d91194fc2e54a, type: 3}
+  - name: Gravel
+    sprite: {fileID: 21300000, guid: 24e28159dd4cf7f42b9b73df41c9e2e9, type: 3}
+    type: 0
+  - name: Sand
+    sprite: {fileID: 21300000, guid: 6ac957def22f8154d90fd12d391fae04, type: 3}
+    type: 0
+  - name: Stone
+    sprite: {fileID: 21300000, guid: d69da92e51a9b004bab58cfe90ce05fb, type: 3}
+    type: 0
+  - name: Water
+    sprite: {fileID: 21300000, guid: 6b34a0948716294459d75d0bed111365, type: 3}
+    type: 0
+  - name: Wall
+    sprite: {fileID: 21300000, guid: a4254a9273ba0294db25896507d2d1db, type: 3}
     type: 1
 --- !u!114 &415614258
 MonoBehaviour:
