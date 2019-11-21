@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
 {
-    public int X = 16;
-    public int Y = 16;
+    public int X;
+    public int Y;
 
     public GameObject nodePrefab;
     public Transform gridParent;
@@ -22,7 +22,7 @@ public class GridGenerator : MonoBehaviour
             for (int y = 0; y < Y; y++)
             {
                 Node node = Instantiate(nodePrefab, gridParent).GetComponent<Node>();
-                node.transform.position = new Vector3(33 * (x - Mathf.Floor(X / 2f)) + 696, 33 * (y - Mathf.Floor(Y / 2f)) + 391.5f);
+                node.GetComponent<RectTransform>().anchoredPosition = new Vector3(33 * (x - X / 2.5f), 33 * (y - Y / 2.5f));
                 node.x = x;
                 node.y = y;
             }
