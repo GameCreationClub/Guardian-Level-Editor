@@ -45,4 +45,9 @@ public class NodeManager : GlobalEnums
     {
         this.clickMode = (ClickMode)clickMode;
     }
+
+    public void SetCurrentSpriteValue(SpriteValue spriteValue)
+    {
+        currentSpriteValue = spriteValue;
+    }
 }
