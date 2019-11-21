@@ -32,4 +32,6 @@ public struct SpriteValue
 {
     public string name;
     public Sprite sprite;
+
+    public static SpriteValue empty = new SpriteValue();
 }
