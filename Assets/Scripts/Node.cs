@@ -43,11 +43,40 @@ public class Node : MonoBehaviour
         nodeManager.HandleNodeClick(this);
     }
 
+    public void NodeEnter()
+    {
+        MouseHoverAnimation(true);
+
+        if (Input.GetMouseButton(0))
+        {
+            nodeManager.HandleNodeClick(this);
+        }
+    }
+
+    public void NodeExit()
+    {
+        MouseHoverAnimation(false);
+    }
+
     private void CheckSpriteValueEmpty()
     {
         if (SpriteValue.IsNull(spriteValue))
         {
             objectImage.sprite = floorValue.sprite;
+        }
+    }
+
+    private void MouseHoverAnimation(bool mouseEnter)
+    {
+        if (mouseEnter)
+        {
+            objectImage.color = new Color(0.9f, 0.9f, 0.9f);
+            floorImage.color = new Color(0.9f, 0.9f, 0.9f);
+        }
+        else
+        {
+            objectImage.color = Color.white;
+            floorImage.color = Color.white;
         }
     }
 }
