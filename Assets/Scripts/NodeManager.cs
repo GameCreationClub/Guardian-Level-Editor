@@ -7,10 +7,12 @@ public class NodeManager : GlobalEnums
     public ClickMode clickMode;
 
     private Main main;
+    private PropertiesPanel propertiesPanel;
 
     private void Start()
     {
         main = FindObjectOfType<Main>();
+        propertiesPanel = FindObjectOfType<PropertiesPanel>();
     }
 
     public void HandleNodeClick(Node node)
@@ -23,6 +25,8 @@ public class NodeManager : GlobalEnums
         {
             node.SetSpriteValue(SpriteValue.empty);
         }
+
+        propertiesPanel.DisplayProperties(node);
     }
 
     public void SetClickMode(int clickMode)
