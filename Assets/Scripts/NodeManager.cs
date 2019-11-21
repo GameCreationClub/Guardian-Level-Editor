@@ -35,7 +35,7 @@ public class NodeManager : GlobalEnums
         }
         else if (clickMode.Equals(ClickMode.Erase))
         {
-            node.SetSpriteValue(SpriteValue.empty);
+            node.SetSpriteValue(SpriteValue.Null());
         }
 
         propertiesPanel.DisplayProperties(node);

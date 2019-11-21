@@ -9,16 +9,16 @@ public class Node : MonoBehaviour
     public int y;
 
     public new string name;
-    public SpriteValue spriteValue = SpriteValue.empty;
-    public SpriteValue floorValue = SpriteValue.empty;
+    public SpriteValue spriteValue;
+    public SpriteValue floorValue;
 
-    private Image image;
+    public Image objectImage;
+    public Image floorImage;
 
     private NodeManager nodeManager;
 
     private void Start()
     {
-        image = GetComponent<Image>();
         nodeManager = FindObjectOfType<NodeManager>();
     }
 
@@ -26,7 +26,7 @@ public class Node : MonoBehaviour
     {
         this.spriteValue = spriteValue;
         name = spriteValue.name;
-        image.sprite = spriteValue.sprite;
+        objectImage.sprite = spriteValue.sprite;
 
         CheckSpriteValueEmpty();
     }
@@ -34,6 +34,7 @@ public class Node : MonoBehaviour
     public void SetFloorValue(SpriteValue floorValue)
     {
         this.floorValue = floorValue;
+        floorImage.sprite = floorValue.sprite;
         CheckSpriteValueEmpty();
     }
 
@@ -44,9 +45,9 @@ public class Node : MonoBehaviour
 
     private void CheckSpriteValueEmpty()
     {
-        if (spriteValue.Equals(SpriteValue.empty))
+        if (SpriteValue.IsNull(spriteValue))
         {
-            image.sprite = floorValue.sprite;
+            objectImage.sprite = floorValue.sprite;
         }
     }
 }

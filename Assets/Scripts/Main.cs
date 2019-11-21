@@ -28,23 +28,33 @@ public class Main : MonoBehaviour
 }
 
 [System.Serializable]
-public class SpriteValue
+public struct SpriteValue
 {
     public string name;
     public Sprite sprite;
     public GlobalEnums.ObjectType type;
-
-    public static SpriteValue empty = new SpriteValue("", null, GlobalEnums.ObjectType.Object);
-
-    public SpriteValue()
-    {
-
-    }
 
     public SpriteValue(string name, Sprite sprite, GlobalEnums.ObjectType type)
     {
         this.name = name;
         this.sprite = sprite;
         this.type = type;
+    }
+
+    public static bool IsNull(SpriteValue spriteValue)
+    {
+        try
+        {
+            return spriteValue.name.Equals("") && spriteValue.sprite.Equals(null);
+        }
+        catch
+        {
+            return true;
+        }
+    }
+
+    public static SpriteValue Null()
+    {
+        return new SpriteValue("", null, GlobalEnums.ObjectType.Object);
     }
 }
