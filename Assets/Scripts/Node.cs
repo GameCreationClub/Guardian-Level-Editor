@@ -9,7 +9,8 @@ public class Node : MonoBehaviour
     public int y;
 
     public new string name;
-    public SpriteValue spriteValue;
+    public SpriteValue spriteValue = SpriteValue.empty;
+    public SpriteValue floorValue = SpriteValue.empty;
 
     private Image image;
 
@@ -24,12 +25,28 @@ public class Node : MonoBehaviour
     public void SetSpriteValue(SpriteValue spriteValue)
     {
         this.spriteValue = spriteValue;
-        image.sprite = spriteValue.sprite;
         name = spriteValue.name;
+        image.sprite = spriteValue.sprite;
+
+        CheckSpriteValueEmpty();
+    }
+
+    public void SetFloorValue(SpriteValue floorValue)
+    {
+        this.floorValue = floorValue;
+        CheckSpriteValueEmpty();
     }
 
     public void NodeClicked()
     {
         nodeManager.HandleNodeClick(this);
+    }
+
+    private void CheckSpriteValueEmpty()
+    {
+        if (spriteValue.Equals(SpriteValue.empty))
+        {
+            image.sprite = floorValue.sprite;
+        }
     }
 }
