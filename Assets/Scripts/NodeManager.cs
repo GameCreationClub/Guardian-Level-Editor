@@ -18,9 +18,6 @@ public class NodeManager : GlobalEnums
     {
         main = FindObjectOfType<Main>();
         propertiesPanel = FindObjectOfType<PropertiesPanel>();
-
-        //REMOVE LATER:
-        SetCurrentSpriteValue(main.spriteValues[0]);
     }
 
     public void HandleNodeClick(Node node)
@@ -38,7 +35,14 @@ public class NodeManager : GlobalEnums
         }
         else if (clickMode.Equals(ClickMode.Erase))
         {
-            node.SetSpriteValue(SpriteValue.Null());
+            if (node.spriteValue.IsNull())
+            {
+                node.SetFloorValue(SpriteValue.Null());
+            }
+            else
+            {
+                node.SetSpriteValue(SpriteValue.Null());
+            }
         }
 
         propertiesPanel.DisplayProperties(node);

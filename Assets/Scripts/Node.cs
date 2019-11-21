@@ -60,7 +60,7 @@ public class Node : MonoBehaviour
 
     private void CheckSpriteValueEmpty()
     {
-        if (SpriteValue.IsNull(spriteValue))
+        if (spriteValue.IsNull())
         {
             objectImage.sprite = floorValue.sprite;
         }

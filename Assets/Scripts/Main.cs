@@ -41,11 +41,11 @@ public struct SpriteValue
         this.type = type;
     }
 
-    public static bool IsNull(SpriteValue spriteValue)
+    public bool IsNull()
     {
         try
         {
-            return spriteValue.name.Equals("") && spriteValue.sprite.Equals(null);
+            return name.Equals("") && sprite.Equals(null);
         }
         catch
         {
