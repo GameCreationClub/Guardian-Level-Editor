@@ -11,6 +11,8 @@ public class NodeManager : GlobalEnums
 
     public Image currentSpriteImage;
 
+    private Node[,] nodes;
+
     private Main main;
     private PropertiesPanel propertiesPanel;
 
@@ -18,6 +20,16 @@ public class NodeManager : GlobalEnums
     {
         main = FindObjectOfType<Main>();
         propertiesPanel = FindObjectOfType<PropertiesPanel>();
+    }
+
+    public void InitializeNodeMatrix(int width, int height)
+    {
+        nodes = new Node[width, height];
+    }
+
+    public void AddNode(Node node)
+    {
+        nodes[node.x, node.y] = node;
     }
 
     public void HandleNodeClick(Node node)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
+    public string levelName;
+
     public List<SpriteValue> spriteValues = new List<SpriteValue>();
 
     public Sprite GetSpriteFromName(string name)
