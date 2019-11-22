@@ -1,12 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Main : MonoBehaviour
 {
     public string levelName;
 
     public List<SpriteValue> spriteValues = new List<SpriteValue>();
+
+    private SpriteValue chosenSprite;
+    public SpriteValue ChosenSprite
+    {
+        get { return chosenSprite; }
+    }
+
+    private UnityEvent chooseSpriteEvent;
 
     public Sprite GetSpriteFromName(string name)
     {
@@ -26,6 +35,17 @@ public class Main : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void ChooseSprite(SpriteValue spriteValue)
+    {
+        chosenSprite = spriteValue;
+        chooseSpriteEvent.Invoke();
+    }
+
+    public void SetChooseSpriteEvent(UnityEvent e)
+    {
+        chooseSpriteEvent = e;
     }
 }
 

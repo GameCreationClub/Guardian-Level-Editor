@@ -11,15 +11,17 @@ public class ChooseSpriteButton : MonoBehaviour
     public Image image;
 
     private NodeManager nodeManager;
+    private Main main;
 
     private void Start()
     {
         nodeManager = FindObjectOfType<NodeManager>();
+        main = FindObjectOfType<Main>();
     }
 
     public void ChooseThisSprite()
     {
-        nodeManager.SetCurrentSpriteValue(spriteValue);
+        main.ChooseSprite(spriteValue);
     }
 
     public void SetSpriteValue(SpriteValue spriteValue)

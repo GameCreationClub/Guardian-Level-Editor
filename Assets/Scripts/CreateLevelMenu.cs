@@ -9,6 +9,8 @@ public class CreateLevelMenu : MonoBehaviour
     public InputField widthInput;
     public InputField heightInput;
 
+    public Image defaultFloorImage;
+
     private Main main;
     private GridGenerator gridGenerator;
 
@@ -28,5 +30,10 @@ public class CreateLevelMenu : MonoBehaviour
         gridGenerator.GenerateGrid(x, y);
 
         gameObject.SetActive(false);
+    }
+
+    public void GetDefaultFloorFromMain()
+    {
+        defaultFloorImage.sprite = main.ChosenSprite.sprite;
     }
 }

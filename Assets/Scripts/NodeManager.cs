@@ -65,9 +65,9 @@ public class NodeManager : GlobalEnums
         this.clickMode = (ClickMode)clickMode;
     }
 
-    public void SetCurrentSpriteValue(SpriteValue spriteValue)
+    public void GetCurrentSpriteValueFromMain()
     {
-        currentSpriteValue = spriteValue;
-        currentSpriteImage.sprite = spriteValue.sprite;
+        currentSpriteValue = main.ChosenSprite;
+        currentSpriteImage.sprite = currentSpriteValue.sprite;
     }
 }
