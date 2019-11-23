@@ -37,6 +37,16 @@ public class Main : MonoBehaviour
         return null;
     }
 
+    public SpriteValue GetSpriteValueFromName(string name)
+    {
+        foreach (SpriteValue o in spriteValues)
+        {
+            if (o.name.Equals(name)) return o;
+        }
+
+        return SpriteValue.Null(); ;
+    }
+
     public void ChooseSprite(SpriteValue spriteValue)
     {
         chosenSprite = spriteValue;

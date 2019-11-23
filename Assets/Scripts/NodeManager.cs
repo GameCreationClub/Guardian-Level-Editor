@@ -70,4 +70,36 @@ public class NodeManager : GlobalEnums
         currentSpriteValue = main.ChosenSprite;
         currentSpriteImage.sprite = currentSpriteValue.sprite;
     }
+
+    public void SetNodeFromNodeData(NodeData nodeData)
+    {
+        SpriteValue floorValue = main.GetSpriteValueFromName(nodeData.floorValue);
+        SpriteValue spriteValue = main.GetSpriteValueFromName(nodeData.spriteValue);
+
+        nodes[nodeData.x, nodeData.y].SetFloorValue(floorValue);
+        nodes[nodeData.x, nodeData.y].SetSpriteValue(spriteValue);
+    }
+
+    public int GetWidth()
+    {
+        return nodes.GetLength(0);
+    }
+
+    public int GetHeight()
+    {
+        return nodes.GetLength(1);
+    }
+
+    public NodeData[] GetNodeData()
+    {
+        List<NodeData> nodeData = new List<NodeData>();
+
+        foreach (Node node in nodes)
+        {
+            NodeData currentNodeData = new NodeData(node.x, node.y, node.spriteValue.name, node.floorValue.name);
+            nodeData.Add(currentNodeData);
+        }
+
+        return nodeData.ToArray();
+    }
 }
