@@ -10,20 +10,20 @@ public class GridNavigationMovement : MonoBehaviour
     {
         if (canNavigate)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 transform.Translate(Vector3.down);
             }
-            else if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 transform.Translate(Vector3.up);
             }
 
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.Translate(Vector3.left);
             }
-            else if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Translate(Vector3.right);
             }
