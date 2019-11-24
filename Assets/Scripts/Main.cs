@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
     public string levelName;
 
     public List<SpriteValue> spriteValues = new List<SpriteValue>();
+
+    public GameObject pauseMenu;
 
     private SpriteValue chosenSprite;
     public SpriteValue ChosenSprite
@@ -16,6 +19,14 @@ public class Main : MonoBehaviour
     }
 
     private UnityEvent chooseSpriteEvent;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+        }
+    }
 
     public Sprite GetSpriteFromName(string name)
     {
@@ -56,6 +67,16 @@ public class Main : MonoBehaviour
     public void SetChooseSpriteEvent(UnityEvent e)
     {
         chooseSpriteEvent = e;
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
 
