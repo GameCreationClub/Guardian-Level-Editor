@@ -5,6 +5,8 @@ using Crosstales.FB;
 
 public class FileManager : MonoBehaviour
 {
+    [SerializeField] private string filePath = "";
+
     private Main main;
     private NodeManager nodeManager;
     private GridGenerator gridGenerator;
@@ -18,13 +20,34 @@ public class FileManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
-            LoadLevel();
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                SaveLevel();
+            }
         }
     }
 
     public void SaveLevel()
+    {
+        if (filePath.Equals(""))
+        {
+            SaveAs();
+        }
+        else
+        {
+            Save(filePath);
+        }
+    }
+
+    private void SaveAs()
+    {
+        filePath = FileBrowser.SaveFile(main.levelName, "json");
+        Save(filePath);
+    }
+
+    private void Save(string path)
     {
         string levelName = main.levelName;
         int width = nodeManager.GetWidth();
@@ -32,15 +55,14 @@ public class FileManager : MonoBehaviour
         NodeData[] nodeData = nodeManager.GetNodeData();
 
         SaveFile saveFile = new SaveFile(levelName, width, height, nodeData);
-        string path = FileBrowser.SaveFile(levelName, "json");
         string json = JsonUtility.ToJson(saveFile);
         System.IO.File.WriteAllText(path, json);
     }
 
     public void LoadLevel()
     {
-        string path = FileBrowser.OpenSingleFile("json");
-        string json = System.IO.File.ReadAllText(path);
+        filePath = FileBrowser.OpenSingleFile("json");
+        string json = System.IO.File.ReadAllText(filePath);
 
         SaveFile saveFile = JsonUtility.FromJson<SaveFile>(json);
         gridGenerator.GenerateGrid(saveFile.width, saveFile.height);
