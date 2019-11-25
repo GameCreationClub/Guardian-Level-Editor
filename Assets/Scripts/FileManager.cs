@@ -10,12 +10,14 @@ public class FileManager : MonoBehaviour
     private Main main;
     private NodeManager nodeManager;
     private GridGenerator gridGenerator;
+    private NotificationManager notificationManager;
 
     private void Start()
     {
         main = FindObjectOfType<Main>();
         nodeManager = FindObjectOfType<NodeManager>();
         gridGenerator = FindObjectOfType<GridGenerator>();
+        notificationManager = FindObjectOfType<NotificationManager>();
     }
 
     private void Update()
@@ -49,27 +51,45 @@ public class FileManager : MonoBehaviour
 
     private void Save(string path)
     {
-        string levelName = main.levelName;
-        int width = nodeManager.GetWidth();
-        int height = nodeManager.GetHeight();
-        NodeData[] nodeData = nodeManager.GetNodeData();
+        try
+        {
+            string levelName = main.levelName;
+            int width = nodeManager.GetWidth();
+            int height = nodeManager.GetHeight();
+            NodeData[] nodeData = nodeManager.GetNodeData();
 
-        SaveFile saveFile = new SaveFile(levelName, width, height, nodeData);
-        string json = JsonUtility.ToJson(saveFile);
-        System.IO.File.WriteAllText(path, json);
+            SaveFile saveFile = new SaveFile(levelName, width, height, nodeData);
+            string json = JsonUtility.ToJson(saveFile);
+            System.IO.File.WriteAllText(path, json);
+
+            notificationManager.DisplayNotification("Saved successfully");
+        }
+        catch
+        {
+            notificationManager.DisplayNotification("Save unsuccessful", Color.red);
+        }
     }
 
     public void LoadLevel()
     {
-        filePath = FileBrowser.OpenSingleFile("json");
-        string json = System.IO.File.ReadAllText(filePath);
-
-        SaveFile saveFile = JsonUtility.FromJson<SaveFile>(json);
-        gridGenerator.GenerateGrid(saveFile.width, saveFile.height);
-
-        foreach (NodeData nodeData in saveFile.nodeData)
+        try
         {
-            nodeManager.SetNodeFromNodeData(nodeData);
+            filePath = FileBrowser.OpenSingleFile("json");
+            string json = System.IO.File.ReadAllText(filePath);
+
+            SaveFile saveFile = JsonUtility.FromJson<SaveFile>(json);
+            gridGenerator.GenerateGrid(saveFile.width, saveFile.height);
+
+            foreach (NodeData nodeData in saveFile.nodeData)
+            {
+                nodeManager.SetNodeFromNodeData(nodeData);
+            }
+
+            notificationManager.DisplayNotification("Loaded successfully");
+        }
+        catch
+        {
+            notificationManager.DisplayNotification("Load unsuccessful", Color.red);
         }
     }
 }
