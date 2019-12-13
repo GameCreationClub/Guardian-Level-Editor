@@ -27,7 +27,7 @@ public class ChooseSpriteButton : MonoBehaviour
     public void SetSpriteValue(SpriteValue spriteValue)
     {
         this.spriteValue = spriteValue;
-        nameText.text = spriteValue.name;
+        nameText.text = spriteValue.name.Replace('_', ' ');
         image.sprite = spriteValue.sprite;
     }
 }
