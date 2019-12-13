@@ -7,9 +7,13 @@ public class ChooseSpriteMenu : MonoBehaviour
     public GameObject buttonPrefab;
     public Transform buttonsParent;
 
+    private Transform[] buttons;
+
+    private GlobalEnums.ObjectType type = (GlobalEnums.ObjectType)(-1);
+
     private Main main;
 
-    private void Start()
+    private void Awake()
     {
         main = FindObjectOfType<Main>();
 
@@ -23,5 +27,45 @@ public class ChooseSpriteMenu : MonoBehaviour
             ChooseSpriteButton button = Instantiate(buttonPrefab, buttonsParent).GetComponent<ChooseSpriteButton>();
             button.SetSpriteValue(spriteValue);
         }
+
+        buttons = new Transform[buttonsParent.childCount];
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i] = buttonsParent.GetChild(i);
+        }
+    }
+
+    private void ShowButtons()
+    {
+        foreach (Transform button in buttons)
+        {
+            if (type.Equals((GlobalEnums.ObjectType)(-1)))
+            {
+                button.gameObject.SetActive(true);
+            }
+            else if (button.GetComponent<ChooseSpriteButton>().spriteValue.type.Equals(type))
+            {
+                button.gameObject.SetActive(true);
+            }
+            else
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void OpenMenu()
+    {
+        type = (GlobalEnums.ObjectType)(-1);
+        gameObject.SetActive(true);
+        ShowButtons();
+    }
+
+    public void OpenMenu(int type)
+    {
+        this.type = (GlobalEnums.ObjectType)type;
+        gameObject.SetActive(true);
+        ShowButtons();
     }
 }

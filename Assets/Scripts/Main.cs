@@ -58,6 +58,26 @@ public class Main : MonoBehaviour
         return SpriteValue.Null(); ;
     }
 
+    public SpriteValue[] GetSpriteValues()
+    {
+        return spriteValues.ToArray();
+    }
+
+    public SpriteValue[] GetSpriteValues(GlobalEnums.ObjectType type)
+    {
+        List<SpriteValue> spriteValues = new List<SpriteValue>();
+
+        foreach (SpriteValue spriteValue in this.spriteValues)
+        {
+            if (spriteValue.type.Equals(type))
+            {
+                spriteValues.Add(spriteValue);
+            }
+        }
+
+        return spriteValues.ToArray();
+    }
+
     public void ChooseSprite(SpriteValue spriteValue)
     {
         chosenSprite = spriteValue;
