@@ -1248,50 +1248,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: 
   spriteValues:
-  - name: Stone_1
+  - name: Stone_Tile
     sprite: {fileID: 21300000, guid: d69da92e51a9b004bab58cfe90ce05fb, type: 3}
     type: 0
-  - name: Stone_2
-    sprite: {fileID: 21300000, guid: 24e28159dd4cf7f42b9b73df41c9e2e9, type: 3}
-    type: 0
-  - name: Stone_Damaged
-    sprite: {fileID: 21300000, guid: 15b047b8053dc604890fe236a19ece11, type: 3}
-    type: 0
-  - name: Ground
-    sprite: {fileID: 21300000, guid: 6ac957def22f8154d90fd12d391fae04, type: 3}
-    type: 0
-  - name: Wall_1
+  - name: Stone_Wall
     sprite: {fileID: 21300000, guid: a4254a9273ba0294db25896507d2d1db, type: 3}
     type: 0
-  - name: Wall_2
-    sprite: {fileID: 21300000, guid: feaa1573474bf864d957d96419e54c83, type: 3}
-    type: 0
-  - name: Wall_Damaged
-    sprite: {fileID: 21300000, guid: 8b292b0ac7618f14a8d956a13f2945f0, type: 3}
-    type: 0
   - name: Torch
-    sprite: {fileID: 21300000, guid: 46e3dfbe9f912d842948ce07dc04249e, type: 3}
+    sprite: {fileID: 21300000, guid: 975ee854ec6e5554fa7528dee02e37b6, type: 3}
     type: 1
-  - name: Mana_Small
-    sprite: {fileID: 21300000, guid: 6b34a0948716294459d75d0bed111365, type: 3}
-    type: 1
-  - name: Mana_Large
-    sprite: {fileID: 21300000, guid: 8fab8216e39c432499681bb2396ee019, type: 3}
-    type: 1
-  - name: Obelisk_Spell
-    sprite: {fileID: 21300000, guid: 5460ce9a94a888d49b2ef077fe772df7, type: 3}
-    type: 1
-  - name: Obelisk_Lore
-    sprite: {fileID: 21300000, guid: 236caa279e3131e40adc2c5498f979ae, type: 3}
-    type: 1
-  - name: Base_Guardian
-    sprite: {fileID: 21300000, guid: 978d895d689748847b6e6d65b2735011, type: 3}
+  - name: Spell_Obelisk
+    sprite: {fileID: 21300000, guid: 4b77274c99748234faf5f00a3a84bf28, type: 3}
     type: 1
   - name: Entrance
-    sprite: {fileID: 21300000, guid: 7c66c4bbe2ca0054db2a3c81c1ab2ed1, type: 3}
+    sprite: {fileID: 21300000, guid: a94685418b8d8934e976dcde53ecc445, type: 3}
     type: 1
   - name: Exit
-    sprite: {fileID: 21300000, guid: 89c43e6754946bf4295c0a04f0a25c35, type: 3}
+    sprite: {fileID: 21300000, guid: 1aa6083196c9e7f479f20d81d7068013, type: 3}
+    type: 1
+  - name: Player
+    sprite: {fileID: 21300000, guid: de7db307340413f4aa7036f9741a94bb, type: 3}
+    type: 1
+  - name: Guardian
+    sprite: {fileID: 21300000, guid: 7eaf38c504168e14bb44386a71157158, type: 3}
+    type: 1
+  - name: Gloom
+    sprite: {fileID: 21300000, guid: 0783752e572ea9e4d923b6d84bc25107, type: 3}
+    type: 1
+  - name: Prowler
+    sprite: {fileID: 21300000, guid: 8adc4e0a6358aa04eb46e09450269807, type: 3}
+    type: 1
+  - name: Aspect
+    sprite: {fileID: 21300000, guid: d687361eb4d638e4582451cd77cc5e81, type: 3}
     type: 1
   pauseMenu: {fileID: 569692027}
 --- !u!114 &415614258
