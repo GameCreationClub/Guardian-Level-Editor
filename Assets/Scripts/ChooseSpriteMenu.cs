@@ -25,13 +25,27 @@ public class ChooseSpriteMenu : MonoBehaviour
 
     private void GenerateButtons()
     {
-        foreach (SpriteValue spriteValue in main.spriteValues)
+        List<List<SpriteValue>> categorizedSpriteValues = new List<List<SpriteValue>>();
+        for (int i = 0; i < System.Enum.GetValues(typeof(GlobalEnums.ObjectType)).Length; i++)
         {
-            ChooseSpriteButton button = Instantiate(buttonPrefab, buttonsParent).GetComponent<ChooseSpriteButton>();
-            button.SetSpriteValue(spriteValue);
+            categorizedSpriteValues.Add(new List<SpriteValue>());
         }
 
-        buttons = new Transform[buttonsParent.childCount];
+        foreach (SpriteValue spriteValue in main.spriteValues)
+        {
+            categorizedSpriteValues[(int)spriteValue.type].Add(spriteValue);
+        }
+
+        foreach (List<SpriteValue> spriteValues in categorizedSpriteValues)
+        {
+            foreach (SpriteValue spriteValue in spriteValues)
+            {
+                ChooseSpriteButton button = Instantiate(buttonPrefab, buttonsParent).GetComponent<ChooseSpriteButton>();
+                button.SetSpriteValue(spriteValue);
+            }
+        }
+
+        buttons = new Transform[main.spriteValues.Count];
 
         for (int i = 0; i < buttons.Length; i++)
         {
