@@ -36,11 +36,11 @@ public class NodeManager : GlobalEnums
     {
         if (clickMode.Equals(ClickMode.Add))
         {
-            if (currentSpriteValue.type.Equals(ObjectType.Floor))
+            if (currentSpriteValue.type.Equals(ObjectType.Floor) || currentSpriteValue.type.Equals(ObjectType.Wall))
             {
                 node.SetFloorValue(currentSpriteValue);
             }
-            else if (currentSpriteValue.type.Equals(ObjectType.Object))
+            else if (currentSpriteValue.type.Equals(ObjectType.Object) || currentSpriteValue.type.Equals(ObjectType.Entity))
             {
                 node.SetSpriteValue(currentSpriteValue);
             }

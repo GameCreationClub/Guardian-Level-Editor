@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChooseSpriteMenu : MonoBehaviour
 {
     public GameObject buttonPrefab;
     public Transform buttonsParent;
+
+    public Dropdown chooseTypeDropdown;
 
     private Transform[] buttons;
 
@@ -60,12 +63,22 @@ public class ChooseSpriteMenu : MonoBehaviour
         type = (GlobalEnums.ObjectType)(-1);
         gameObject.SetActive(true);
         ShowButtons();
+
+        chooseTypeDropdown.gameObject.SetActive(true);
     }
 
     public void OpenMenu(int type)
     {
         this.type = (GlobalEnums.ObjectType)type;
         gameObject.SetActive(true);
+        ShowButtons();
+
+        chooseTypeDropdown.gameObject.SetActive(false);
+    }
+
+    public void ChooseTypeDrowpdown()
+    {
+        type = (GlobalEnums.ObjectType)(chooseTypeDropdown.value - 1);
         ShowButtons();
     }
 }
