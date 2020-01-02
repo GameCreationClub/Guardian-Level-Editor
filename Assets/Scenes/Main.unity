@@ -1477,7 +1477,7 @@ MonoBehaviour:
   - name: Exit
     sprite: {fileID: 21300000, guid: 1aa6083196c9e7f479f20d81d7068013, type: 3}
     type: 1
-  - name: Player
+  - name: Adventurer
     sprite: {fileID: 21300000, guid: de7db307340413f4aa7036f9741a94bb, type: 3}
     type: 3
   - name: Guardian
